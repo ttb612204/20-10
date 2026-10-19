@@ -1,0 +1,618 @@
+/* ==========================================================================
+   MOBILE & RESPONSIVE STYLESHEET
+   ========================================================================== */
+
+/* --- Mobile: tiny-mobile-branch --- */
+/* ============================================================
+   NHÁNH HIỂN THỊ RIÊNG CHO ĐIỆN THOẠI
+   Chỉ chạy khi vùng hiển thị nhỏ. Laptop/desktop giữ nguyên 100%
+   HTML, JS, nhạc, video, đồng bộ lyric và mọi phân cảnh gốc.
+   ============================================================ */
+@media screen and (max-width: 700px) and (orientation: portrait) {
+    :root { --anh-cao: 51dvh; }
+    html, body { width: 100%; height: 100%; }
+    body { height: 100dvh; }
+
+    /* Mỗi câu chúc nằm trong phần đầu, không chèn vào mắt/video. */
+    .text-layer {
+        box-sizing: border-box;
+        padding-inline: 16px;
+        letter-spacing: clamp(.6px, .35vw, 1.5px);
+        line-height: 1.4;
+        overflow-wrap: break-word;
+    }
+    #text-1 { font-size: clamp(26px, 7.6vw, 38px); }
+    #text-2 { font-size: clamp(24px, 7vw, 33px); bottom: 13%; }
+    #text-3 { font-size: clamp(20px, 5.6vw, 27px); top: 9%; }
+    #text-4 { font-size: clamp(24px, 7.2vw, 34px); bottom: 11%; }
+    #text-5 { top: 6.5%; left: 0; width: 100%; font-size: clamp(19px, 5.6vw, 27px); }
+    #text-6 { top: 9%; font-size: clamp(23px, 6.2vw, 32px); }
+    #text-7 { top: 7.5%; font-size: clamp(20px, 5.5vw, 27px); }
+    #text-8, #text-9 {
+        top: 6%; left: 0; width: 100%;
+        font-size: clamp(21px, 5.65vw, 28px);
+        line-height: 1.38; letter-spacing: 1px;
+        padding-inline: clamp(14px, 4vw, 22px);
+    }
+
+    /* Tiny ở phần trên giữa; mắt và má hồng vẫn cùng hệ tọa độ. */
+    #khung-mat {
+        gap: clamp(38px, 11vw, 56px);
+    }
+    #khung-mat.canh-muon {
+        gap: 48px;
+        transform: translate(-8vw,-5.5dvh) scale(.94);
+    }
+    #khung-mat.canh-chuc {
+        gap: 46px;
+        transform: translate(-4vw,-16dvh) scale(.93);
+    }
+    #khung-mat.wish-beauty {
+        gap: clamp(38px, 11vw, 54px);
+        transform: translate(0,-5.5dvh) scale(.98);
+    }
+    #khung-mat.wish-smile {
+        gap: clamp(38px, 11vw, 54px);
+        transform: translate(-.5vw,-18dvh) scale(.88);
+    }
+    #khung-mat.wish-smile .ma-hong { opacity: .95 !important; }
+
+    /* Ảnh từ cảnh 20/10 chiếm phía dưới, để mắt và lời chúc ở trên. */
+    #anh-hai-nguoi { right: -3vw; height: var(--anh-cao); max-width: 78vw; }
+    #laCanvas { width: 88vw; }
+    #co-hoa { max-width: 100vw; }
+
+    /* Cảnh sức khỏe: tim bên phải, giữ vùng tối cho mắt và tiêu đề. */
+    #woman-scene {
+        background-size: 68vw auto;
+        background-position: 50% calc(100% - 4px);
+        background-repeat: no-repeat;
+    }
+    #woman-scene.hien-thi {
+        background-size: 74vw auto;
+        background-position: 50% calc(100% - 2px);
+    }
+    #woman-scene::before {
+        background: radial-gradient(ellipse 86vw 54dvh at 50% 71%,
+            rgba(255,72,76,.34),rgba(245,48,60,.18) 30%,rgba(210,26,42,.08) 58%,transparent 100%);
+    }
+
+    /* Ảnh GỐC toàn thân cho điện thoại: không dùng ảnh ngang đã crop. */
+    #woman-scene,
+    #woman-scene.hien-thi {
+        background-image: none !important;
+        background-color: transparent !important;
+        background-size: initial !important;
+        transform: none !important;
+        overflow: visible;
+    }
+    #woman-scene #woman-complete-mobile {
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        right: 1vw;
+        bottom: 1.8dvh;
+        height: min(54dvh, 530px);
+        width: auto;
+        max-width: 96vw;
+        object-fit: contain;
+        object-position: center bottom;
+        opacity: 0;
+        transform: translateY(12px) scale(.97);
+        transform-origin: center bottom;
+        transition: opacity 1.7s ease-in-out, transform 2.4s cubic-bezier(.22,1,.36,1);
+        pointer-events: none;
+        filter: drop-shadow(0 0 8px rgba(248,245,255,.12));
+    }
+    #woman-scene.hien-thi #woman-complete-mobile {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    /* Tâm sáng đỏ đi cùng trái tim được đưa vào đúng khu vực áo. */
+    #woman-scene::before {
+        background: radial-gradient(ellipse 54vw 27dvh at 64% 79%,
+            rgba(255,70,75,.26) 0%, rgba(240,35,52,.16) 28%,
+            rgba(215,25,43,.065) 62%, transparent 100%);
+    }
+
+    /* Cảnh xinh đẹp: vòng sáng ôm Tiny, hoa mọc từ các cạnh. */
+    #beauty-stage .ring { top: 46%; width: 90vw; }
+    .wish-floral { width: 35vw; height: 48dvh; bottom: -12px; }
+    .wish-floral.left { left: -18px; }
+    .wish-floral.right { right: -18px; }
+    .butterfly-wrap { width: 52px; }
+    .butterfly-wrap.left { left: 6%; top: 33%; }
+    .butterfly-wrap.right { right: 5%; top: 39%; }
+
+    /* Cảnh nụ cười: Tiny phía trên, Waguri phía dưới bên phải. */
+    #smile-stage .waguri-figure {
+        width: clamp(195px, 61vw, 278px);
+        height: auto; max-width: none;
+        right: -2vw; bottom: -1dvh;
+        object-fit: contain;
+    }
+    #smile-stage .waguri-aura {
+        right: -24vw; bottom: -10dvh;
+        width: 94vw; height: 58dvh;
+    }
+    #smile-stage .smile-ornament { width: 32vw; height: 36dvh; bottom: 0; }
+    #smile-stage .smile-ornament.left { left: -5vw; }
+    #smile-stage .smile-ornament.right { right: -8vw; opacity: .20; }
+
+    /* Lời hát nằm trong cột trái ở phía dưới, không chặn mắt Tiny. */
+    #tiny-lyric-zone {
+        left: 3%; top: 67%; width: 47%; height: 24%;
+    }
+    #tiny-lyric-zone .lyric-line {
+        font-size: clamp(15px, 4.35vw, 20px);
+        line-height: 1.30; letter-spacing: 0;
+        min-height: 42%;
+        text-shadow: 0 0 7px rgba(255,197,220,.9), 0 0 16px rgba(255,138,195,.55);
+    }
+    #tiny-lyric-zone .lyric-line:first-child { top: 1%; }
+    #tiny-lyric-zone .lyric-line:last-child { top: 53%; }
+    #tiny-lyric-zone .lyric-line.compact { font-size: clamp(15px, 4.1vw, 19px); }
+    #music-wait-hint { max-width: 86vw; bottom: 5%; }
+}
+
+/* Nhánh điện thoại xoay ngang: giữ bố cục ngang rộng giống laptop,
+   thu kích thước những thành phần lớn vừa chiều cao thấp. */
+@media screen and (orientation: landscape) and (max-height: 600px) and (pointer: coarse) {
+    .text-layer { box-sizing: border-box; padding: 0 14px; letter-spacing: 1.4px; }
+    #text-1 { font-size: clamp(28px, 5.4vh, 42px); }
+    #text-2, #text-4 { font-size: clamp(24px, 5vh, 34px); bottom: 6%; }
+    #text-3, #text-5, #text-6, #text-7 { font-size: clamp(19px, 4.8vh, 28px); top: 5%; }
+    #text-5 { width: 57%; }
+    #text-8, #text-9 { font-size: clamp(20px, 5.6vh, 28px); top: 4%; }
+    #khung-mat { transform: scale(.63); }
+    #khung-mat.canh-muon { transform: translateX(-10vw) scale(.65); }
+    #khung-mat.canh-chuc { transform: translateX(-8vw) scale(.65); }
+    #khung-mat.wish-beauty { transform: scale(.64); }
+    #khung-mat.wish-smile { transform: translateX(-17vw) translateY(1vh) scale(.64); }
+    #anh-hai-nguoi { height: 79vh; }
+    /* Điện thoại xoay ngang cũng dùng ảnh gốc đầy đủ, không crop mất đầu. */
+    #woman-scene, #woman-scene.hien-thi {
+        background-image: none !important;
+        background-color: transparent !important;
+        transform: none !important;
+    }
+    #woman-scene #woman-complete-mobile {
+        display: block;
+        position: absolute;
+        right: 4vw;
+        bottom: -1dvh;
+        height: 85dvh;
+        width: auto;
+        max-width: 42vw;
+        object-fit: contain;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1.7s ease-in-out;
+    }
+    #woman-scene.hien-thi #woman-complete-mobile { opacity: 1; }
+    #woman-scene::before {
+        background: radial-gradient(ellipse 37vw 55dvh at 78% 69%,
+            rgba(255,70,75,.30), rgba(225,36,50,.14) 35%, transparent 100%);
+    }
+    #smile-stage .waguri-figure { height: 88vh; width: auto; max-width: 41vw; right: 0; bottom: -1vh; }
+    #tiny-lyric-zone { left: 30%; top: 66%; width: 34%; height: 30%; }
+    #tiny-lyric-zone .lyric-line { font-size: clamp(14px,3vh,18px); line-height: 1.15; }
+    #tiny-lyric-zone .lyric-line.compact { font-size: clamp(13px,2.7vh,16px); }
+}
+
+/* --- Mobile: tiny-mobile-extreme-css --- */
+/* Cấu hình mobile-only; laptop / desktop không có lớp tiny-mobile. */
+.tiny-mobile #tiny-sky .tiny-star:nth-child(n+31),
+.tiny-mobile #lower-stars .lower-star:nth-child(n+13),
+.tiny-mobile #tiny-shop-scene .dalabs-dream-mote:nth-child(n+13),
+.tiny-mobile #tiny-shop-scene .shop-magical-firefly:nth-child(n+11),
+.tiny-mobile #tiny-shop-scene .shop-magical-petal:nth-child(n+16){display:none!important}
+.tiny-mobile #tiny-sky .tiny-star:nth-child(n+13),
+.tiny-mobile #lower-stars .lower-star:nth-child(n+7){animation:none!important;opacity:.6}
+/* Sao vẫn có chiều sâu, bỏ cuộn shadow 3 lớp rất rộng, không giật từng nấc. */
+.tiny-mobile #uiverse-starfield #stars,
+.tiny-mobile #uiverse-starfield #stars2,
+.tiny-mobile #uiverse-starfield #stars3{animation:none!important}
+.tiny-mobile #tiny-shop-scene .dalabs-dream-light{animation:none!important;filter:none!important;opacity:.33}
+.tiny-mobile #tiny-shop-scene .dalabs-dream-neon-border{animation:none!important;opacity:.46}
+.tiny-mobile #tiny-shop-scene .dalabs-dream-stellars path{animation:none!important}
+.tiny-mobile #tiny-shop-scene .dalabs-dream-comets span:nth-child(n+2){display:none!important}
+.tiny-mobile #tiny-shop-scene .dalabs-tiktok{animation:none!important}
+.tiny-mobile #tiny-shop-scene .dalabs-tiktok::before{animation:none!important;display:none}
+.tiny-mobile #tiny-shop-scene .dalabs-aura,
+.tiny-mobile #tiny-shop-scene .dalabs-aurora,
+.tiny-mobile #tiny-shop-scene .dalabs-aurora-layer{filter:none!important}
+.tiny-mobile #shop-product-modal.show{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.tiny-mobile .reality-haze{animation:none!important;filter:none!important}
+/* Chữ vẫn phát sáng, nhưng không dùng nhiều bóng mờ diện tích lớn trên GPU yếu. */
+.tiny-mobile .text-layer{filter:none!important;text-shadow:0 0 9px rgba(255,255,255,.57),0 0 14px rgba(0,225,255,.2)}
+.tiny-mobile #tiny-shop-scene .shop-heading{text-shadow:0 0 9px rgba(160,226,255,.33)}
+/* Bảo lưu màu cyan và biểu cảm của mắt; chỉ gỡ glow động đắt đỏ ở chi tiết phụ. */
+.tiny-mobile .tiny-upgrade-motif{filter:none!important}
+/* Khi trang bị ẩn, không chạy bất kỳ keyframe trang trí nào. */
+.tiny-page-hidden.tiny-mobile .tiny-star,
+.tiny-page-hidden.tiny-mobile .lower-star,
+.tiny-page-hidden.tiny-mobile #tiny-shop-scene *,
+.tiny-page-hidden.tiny-mobile #tiny-shop-scene *::before,
+.tiny-page-hidden.tiny-mobile #tiny-shop-scene *::after{animation-play-state:paused!important}
+\n
+.tiny-mobile #woman-scene { background-image:url(../assets/images/bg-mobile.webp) !important; }
+/* ===== Mobile Scene Stability v2: chỉ Android/iOS/điện thoại; desktop nguyên bản. ===== */
+.tiny-mobile #clover-stage:not(.hien-thi) *,
+.tiny-mobile #luck-stage:not(.hien-thi) *,
+.tiny-mobile #question-stage:not(.hien-thi) *,
+.tiny-mobile #smile-stage:not(.hien-thi) *,
+.tiny-mobile #luck-front-field:not(.active) * {
+    animation-play-state: paused !important;
+}
+/* Giữ các quầng sáng bằng gradient, không animate filter/blur trên cây SVG. */
+.tiny-mobile #clover-stage .clover-ambient {
+    animation:none !important;
+    filter:none !important;
+}
+.tiny-mobile #clover-stage .clover-sample-glow {
+    animation:none !important;
+    filter:none !important;
+    will-change:transform,opacity;
+}
+.tiny-mobile #clover-stage .clover-sample-plant {
+    animation:none !important;
+    filter:drop-shadow(0 0 12px rgba(83,240,139,.68)) !important;
+}
+.tiny-mobile #clover-stage .clover-sample-leaf,
+.tiny-mobile #clover-stage .clover-sample-sway {
+    animation:none !important;
+}
+.tiny-mobile #clover-stage .clover-firefly {
+    box-shadow:0 0 6px rgba(146,250,151,.35);
+    will-change:auto;
+}
+.tiny-mobile #clover-stage .clover-particle {
+    box-shadow:none;
+}
+.tiny-mobile #wish-backdrop { transition:opacity .55s ease !important; }
+.tiny-mobile #wish-backdrop.clover-give {
+    animation:none !important;
+    background:radial-gradient(ellipse 85vw 67vh at 72% 51%,rgba(151,255,183,.32) 0%,rgba(77,180,113,.11) 50%,transparent 80%) !important;
+}
+/* Giai đoạn may mắn / câu hỏi: bỏ blur trên các lớp lớn bị repaint. */
+.tiny-mobile #luck-stage .luck-top-rays {
+    filter:none !important;
+    mix-blend-mode:normal !important;
+    opacity:.38;
+}
+.tiny-mobile #luck-stage .luck-bg-clover,
+.tiny-mobile #luck-stage .luck-bg-clover .luck-bg-svg {
+    filter:none !important;
+}
+.tiny-mobile #luck-stage .luck-fall-clover {
+    filter:none !important;
+}
+.tiny-mobile #question-stage .question-blue-glow,
+.tiny-mobile #question-stage .question-blue-rays {
+    filter:none !important;
+}
+.tiny-mobile #question-stage .question-blue-rays { opacity:.0; }
+.tiny-mobile #question-stage.active .question-blue-rays { opacity:.46; }
+.tiny-mobile #question-stage .question-blue-glow {
+    transition:opacity .8s ease,transform .8s ease;
+}
+/* Ngừng nội suy background-size/background-position của PNG lớn ở cảnh sức khỏe. */
+.tiny-mobile #woman-scene,
+.tiny-mobile #woman-scene.hien-thi {
+    transition:opacity 1.05s ease !important;
+}
+/* Tránh browser tạo thêm texture 2K từ eye-glow khi đang chuyển cảnh. */
+.tiny-mobile #khung-mat.question-one-eye .con-mat {
+    box-shadow:0 0 13px 5px rgba(0,245,255,.48),inset 0 0 12px rgba(255,255,255,.50);
+}
+
+/* --- Mobile: tiny-smooth-transitions-v3 --- */
+/* Tiny Smooth Transitions V3 – isolated decorative work, not Tiny's eyes or words. */
+.tiny-scene-transition #uiverse-starfield #stars,
+.tiny-scene-transition #uiverse-starfield #stars2,
+.tiny-scene-transition #uiverse-starfield #stars3,
+.tiny-scene-transition .tiny-bird,
+.tiny-scene-transition .tiny-health-butterfly,
+.tiny-scene-transition .tiny-meadow-blossom,
+.tiny-scene-transition .tiny-meadow-butterfly {
+    animation-play-state:paused !important;
+}
+.tiny-mobile .reference-wink-trail.heart-mode,
+.tiny-mobile .reference-wink-trail.star-mode {
+    box-shadow:none !important;
+}
+.tiny-mobile .reference-wink-star.heart-mode,
+.tiny-mobile .reference-wink-star.star-mode {
+    filter:drop-shadow(0 0 7px rgba(255,180,215,.68)) !important;
+}
+/* No CPU/GPU-intensive glow repaint while a full-screen scene is crossfading. */
+.tiny-mobile.tiny-scene-transition #decor-beauty .tiny-orbit-star,
+.tiny-mobile.tiny-scene-transition #decor-beauty .tiny-orbit-trail {
+    animation-play-state:paused !important;
+}
+.tiny-mobile #text-7, .tiny-mobile #text-8,
+.tiny-mobile #text-9, .tiny-mobile #text-12, .tiny-mobile #text-13 {
+    text-shadow:0 0 9px rgba(240,250,255,.72),0 0 15px rgba(135,222,255,.32) !important;
+}
+
+/* Luck/question: preserve primary stars but avoid compositing two extra full-screen shadow layers. */
+.luck-scene #uiverse-starfield #stars2,
+.luck-scene #uiverse-starfield #stars3,
+.question-scene-body #uiverse-starfield #stars2,
+.question-scene-body #uiverse-starfield #stars3 {display:none !important;}
+/* Question doesn't need the huge continuously-moving Uiverse star shadow texture. */
+.question-scene-body #uiverse-starfield #stars,
+.question-scene-body #uiverse-starfield #stars2,
+.question-scene-body #uiverse-starfield #stars3 {animation-play-state:paused !important;}
+.tiny-scene-transition #tiny-shop-scene .shop-magical-star,
+.tiny-scene-transition #tiny-shop-scene .shop-magic-petal,
+.tiny-scene-transition #tiny-shop-scene .shop-aurora {animation-play-state:paused !important;}
+
+/* --- Mobile: tiny-mobile-beauty-transition-v4 --- */
+/* V4 – isolate expensive Beauty/Smile/Luck scenery; no desktop changes. */
+.tiny-mobile #decor-beauty #tiny-orbit-star,
+.tiny-mobile #decor-beauty #tiny-orbit-trails,
+.tiny-mobile #decor-beauty .tiny-moon,
+.tiny-mobile #decor-beauty .tiny-orbit-star,
+.tiny-mobile #decor-beauty .tiny-orbit-trail,
+.tiny-mobile #decor-beauty .tiny-glow-planet {display:none!important;animation:none!important;filter:none!important}
+/* The three massive CSS-box-shadow star backgrounds used to overlap SVG floral layers. */
+.tiny-mobile #uiverse-starfield #stars2,
+.tiny-mobile #uiverse-starfield #stars3 {display:none!important}
+/* Faster, GPU-friendly fades; no SVG filter repaint inside the crossfade. */
+.tiny-mobile #tiny-wish-decor .tiny-decor-mode{transition:opacity .44s ease-out,visibility .44s!important}
+.tiny-mobile #beauty-stage{transition:opacity .55s ease-out,visibility .55s!important}
+.tiny-mobile #smile-stage{transition:opacity .57s ease-out,visibility .57s!important}
+.tiny-mobile #wish-backdrop{transition:opacity .55s ease-out!important}
+.tiny-mobile #wish-backdrop.beauty{
+ background:radial-gradient(ellipse 58vw 40vh at 50% 55%,rgba(161,80,169,.13),transparent 91%)!important
+}
+.tiny-mobile #beauty-stage .ring {box-shadow:none!important;transition:opacity .55s ease-out,transform .58s ease-out!important}
+.tiny-mobile #beauty-stage .ring::before,
+.tiny-mobile #beauty-stage .ring::after {text-shadow:none!important;animation:none!important}
+.tiny-mobile #beauty-stage .wish-floral{filter:none!important}
+/* Flower drawings still appear, but do not continuously repaint dozens of animated SVG strokes. */
+.tiny-mobile #beauty-stage .wish-branch {animation:none!important;stroke-dasharray:none!important;stroke-dashoffset:0!important}
+.tiny-mobile #beauty-stage .wish-bloom .petals {animation:none!important;opacity:1!important;transform:none!important}
+.tiny-mobile #beauty-stage .wish-leaf {animation:none!important;opacity:.8!important;transform:none!important}
+.tiny-mobile #beauty-stage .butterfly-wrap.right{display:none!important}
+.tiny-mobile #beauty-stage .butterfly-wrap{filter:none!important}
+.tiny-mobile #beauty-stage .wish-twinkle:nth-of-type(n+8){display:none!important}
+.tiny-mobile #decor-beauty .tiny-meadow-scene .tiny-terrain,
+.tiny-mobile #decor-beauty .tiny-meadow-scene .tiny-horizon-rim,
+.tiny-mobile #decor-beauty .tiny-meadow-scene .tiny-meadow-blossom,
+.tiny-mobile #decor-beauty .tiny-meadow-scene .tiny-meadow-blossom .center {filter:none!important}
+.tiny-mobile #decor-beauty .tiny-meadow-scene .tiny-meadow-blossom {animation:none!important}
+.tiny-mobile #decor-beauty .tiny-beauty-firefly:nth-of-type(n+9){display:none!important}
+.tiny-mobile #decor-beauty .tiny-beauty-firefly {filter:none!important;box-shadow:0 0 5px rgba(255,200,239,.42)!important;animation-duration:9s,6s!important}
+.tiny-mobile #decor-beauty .tiny-orchid-svg,
+.tiny-mobile #decor-beauty .tiny-orchid-svg path {animation:none!important;filter:none!important}
+.tiny-mobile #decor-beauty .tiny-orchid-svg path {stroke-dashoffset:0!important;stroke-dasharray:none!important}
+.tiny-mobile #decor-beauty .tiny-upgrade-motif {filter:none!important}
+.tiny-mobile #smile-stage .waguri-aura,
+.tiny-mobile #smile-stage .waguri-figure {filter:none!important}
+.tiny-mobile #smile-stage .waguri-aura {animation:none!important}
+.tiny-mobile #smile-stage .waguri-figure {transition:opacity .7s ease,transform .75s ease!important}
+.tiny-mobile #smile-stage .warm-halo {animation:none!important}
+/* Hide only peripheral glimmers while the outgoing and incoming scenes overlap. */
+.tiny-mobile.tiny-scene-transition #smile-stage .waguri-glimmer,
+.tiny-mobile.tiny-scene-transition #beauty-stage .wish-twinkle,
+.tiny-mobile.tiny-scene-transition #decor-beauty .tiny-beauty-firefly{animation-play-state:paused!important}
+/* The luck canvas is still faded, but not drawn underneath the new question for an entire second. */
+.tiny-mobile.tiny-luck-exit #luck-front-field canvas,
+.tiny-mobile.tiny-luck-exit #luck-stage canvas{opacity:0!important;transition:opacity .22s ease-out!important}
+.tiny-mobile.tiny-luck-exit #luck-stage .luck-bg-field,
+.tiny-mobile.tiny-luck-exit #luck-stage .luck-top-rays {opacity:0!important;transition:opacity .24s ease-out!important}
+.tiny-mobile #question-stage .question-space-haze {filter:none!important;mix-blend-mode:normal!important;animation:none!important}
+.tiny-mobile #question-stage .question-blue-rays {filter:none!important;animation:none!important}
+.tiny-mobile #question-stage .question-blue-glow {filter:none!important}
+
+/* --- Mobile: tiny-beauty-mobile-v5-one-scene --- */
+/* V5: Beauty only, smartphone/tablet only. Desktop and other scenes remain as V4. */
+.tiny-mobile #decor-beauty .tiny-upgrade-motif,
+.tiny-mobile #decor-beauty .tiny-beauty-garland {display:none!important}
+.tiny-mobile #decor-beauty .tiny-decor-beauty {filter:none!important}
+/* Four petals only, one traversal. They are removed from DOM after exiting the view. */
+.tiny-mobile #decor-beauty .tiny-beauty-petal {
+  animation:tinyPetalFall var(--tiny-v5-duration,7.5s) linear var(--tiny-v5-delay,0s) 1 both!important;
+  text-shadow:none!important;filter:none!important;
+  will-change:transform,opacity;
+}
+.tiny-mobile #decor-beauty .tiny-beauty-glint {
+  animation:none!important;opacity:.65!important;transform:none!important;
+  text-shadow:0 0 5px rgba(255,210,240,.38)!important;filter:none!important;
+}
+.tiny-mobile #decor-beauty .tiny-beauty-firefly {
+  animation:tinyFireflyDrift 8s ease-in-out infinite alternate!important;
+  opacity:.63!important;background:#f7d5f4!important;
+  box-shadow:none!important;filter:none!important;
+}
+/* Meadow: static flowers and horizon, no repeated SVG filtering or sway. */
+.tiny-mobile #decor-beauty .tiny-meadow-scene,
+.tiny-mobile #decor-beauty .tiny-meadow-scene * {
+  filter:none!important;animation:none!important;
+}
+.tiny-mobile #decor-beauty .tiny-meadow-scene .tiny-horizon-rim {opacity:.72}
+/* Two gently drawn side bouquets, one small butterfly and static glimmers. */
+.tiny-mobile #beauty-stage .ring {box-shadow:none!important;will-change:opacity,transform}
+.tiny-mobile #beauty-stage .ring::before,
+.tiny-mobile #beauty-stage .ring::after {animation:none!important;text-shadow:none!important}
+.tiny-mobile #beauty-stage .wish-twinkle {animation:none!important;text-shadow:0 0 5px rgba(255,220,187,.34)!important;opacity:.85!important}
+.tiny-mobile #beauty-stage .butterfly-wrap.left {
+  animation:floatButterfly 6.5s ease-in-out infinite alternate!important;
+  opacity:.80!important;filter:none!important;
+}
+.tiny-mobile #beauty-stage .butterfly-wrap .wing-pair {animation:wingFlap 1.25s ease-in-out infinite alternate!important}
+.tiny-mobile #beauty-stage:not(.hien-thi) *,
+.tiny-mobile #decor-beauty:not(.is-visible) * {animation-play-state:paused!important}
+/* Shorten overdraw without removing the crossfade itself. */
+.tiny-mobile #decor-beauty {transition:opacity .38s ease-out,visibility .38s!important}
+
+/* --- Mobile: tiny-v6-mobile-clover-transition --- */
+/* Mobile-only transition budget: keep Tiny's own eye, blinking and clover animations intact. */
+.tiny-mobile.tiny-v6-clover-switch #smile-stage .waguri-glimmer,
+.tiny-mobile.tiny-v6-clover-switch #smile-stage .smile-ornament,
+.tiny-mobile.tiny-v6-clover-switch #smile-stage .warm-halo,
+.tiny-mobile.tiny-v6-clover-switch #smile-stage .tiny-vinyl-scene *,
+.tiny-mobile.tiny-v6-clover-switch #decor-beauty * {
+    animation-play-state:paused !important;
+}
+/* The blackout handles the fade. Avoid simultaneously fading three enormous star shadow textures. */
+.tiny-mobile.tiny-v6-clover-switch #uiverse-starfield,
+.tiny-mobile.tiny-v6-clover-switch #tiny-sky,
+.tiny-mobile.tiny-v6-clover-switch #lower-stars,
+.tiny-mobile.tiny-v6-clover-switch #sao-vu-tru,
+.tiny-mobile.tiny-v6-clover-switch #vien-vu-tru {
+    transition:none !important;
+    animation:none !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+}
+/* The leaving scene is painted once, then retired, not composited during the clover glow. */
+.tiny-mobile.tiny-v6-clover-switch #smile-stage .waguri-aura,
+.tiny-mobile.tiny-v6-clover-switch #smile-stage .waguri-figure {filter:none !important;}
+.tiny-mobile.tiny-v6-luck-switch #clover-stage,
+.tiny-mobile.tiny-v6-luck-switch #clover-particle-field,
+.tiny-mobile.tiny-v6-luck-switch #wish-backdrop {
+    transition:none !important;
+    animation:none !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+}
+/* During the first frames of luck, stop residual clover glow; keep luck eyes/text composited normally. */
+.tiny-mobile.tiny-v6-luck-switch #clover-stage *,
+.tiny-mobile.tiny-v6-luck-switch #clover-stage *::before,
+.tiny-mobile.tiny-v6-luck-switch #clover-stage *::after {animation-play-state:paused !important;}
+
+/* --- Mobile: tiny-waguri-smooth-reveal-v7 --- */
+/* Waguri is revealed only AFTER the video has decoded its first frame. This
+   avoids WebM transparency frames abruptly appearing halfway through a fade. */
+#smile-stage .waguri-figure,
+#smile-stage.hien-thi .waguri-figure {
+    opacity: 0 !important;
+    transform: translate3d(0, 17px, 0) scale(.965) !important;
+    transition: opacity 1.35s ease-in-out, transform 1.35s cubic-bezier(.22,1,.36,1) !important;
+}
+#smile-stage.hien-thi.waguri-frame-visible .waguri-figure {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) scale(1) !important;
+}
+/* Short compositing fade remains when leaving the scene. */
+#smile-stage:not(.hien-thi) .waguri-figure { opacity: 0 !important; }
+@media (max-width: 700px) {
+    .tiny-mobile #smile-stage .waguri-figure,
+    .tiny-mobile #smile-stage.hien-thi .waguri-figure {
+        filter: none !important;
+        transition: opacity 1.45s ease-in-out, transform 1.45s cubic-bezier(.22,1,.36,1) !important;
+    }
+    .tiny-mobile #smile-stage.hien-thi.waguri-frame-visible .waguri-figure { opacity: 1 !important; }
+}
+
+/* --- Mobile: tiny-v8-mobile-clover-question --- */
+/* Mobile V8: fewer simultaneous raster surfaces, retain original main animation. */
+.tiny-mobile #clover-stage .clover-ambient {
+  background: radial-gradient(ellipse 60% 54% at 52% 52%,rgba(33,148,70,.13),transparent 78%) !important;
+}
+.tiny-mobile #clover-stage .clover-sample-plant {
+  filter:none !important;
+}
+.tiny-mobile #clover-stage .clover-sample-glow {
+  filter:none !important;
+  opacity:.8;
+}
+.tiny-mobile #clover-stage .clover-firefly,
+.tiny-mobile #clover-stage .clover-particle {
+  filter:none !important;
+  box-shadow:0 0 4px rgba(127,255,164,.25) !important;
+}
+/* Retain the leaf silhouette; avoid a large full-screen SVG shader while the eye morph runs. */
+.tiny-mobile #clover-stage .clover-sample-garden svg,
+.tiny-mobile #clover-stage .clover-sample-plant path {
+  filter:none !important;
+}
+/* GPU-only fade on the retiring scene; do not repaint two animated canvas textures. */
+.tiny-mobile.tiny-v8-question-enter #luck-stage,
+.tiny-mobile.tiny-v8-question-enter #luck-front-field {
+  pointer-events:none !important;
+  will-change:opacity;
+}
+.tiny-mobile.tiny-v8-question-enter #luck-stage .luck-top-rays,
+.tiny-mobile.tiny-v8-question-enter #luck-stage .luck-ambient,
+.tiny-mobile.tiny-v8-question-enter #luck-stage .luck-bg-clover,
+.tiny-mobile.tiny-v8-question-enter #luck-front-field * {
+  animation-play-state:paused !important;
+}
+.tiny-mobile #luck-stage.tiny-v8-fade-luck,
+.tiny-mobile #luck-front-field.tiny-v8-fade-luck {
+  opacity:0 !important;
+  transition:opacity .23s ease-out !important;
+}
+.tiny-mobile #luck-stage.tiny-v8-retired-luck,
+.tiny-mobile #luck-front-field.tiny-v8-retired-luck {
+  display:none !important;
+}
+/* Ensure the question still shows its original eyes, wink line and cyan title. */
+.tiny-mobile.tiny-v8-question-enter #question-stage .question-space-haze {
+  filter:none !important;
+}
+
+/* --- Mobile: tiny-v9-mobile-staggered-transitions --- */
+/* V9 — riêng mobile: phần cỏ nền may mắn hiển thị dần thay vì pop. */
+.tiny-mobile #luck-stage {transition:opacity .95s ease-in-out!important;}
+.tiny-mobile #luck-front-field {transition:opacity 1.05s ease-in-out!important;}
+.tiny-mobile #luck-stage .luck-bg-clover {
+    transition:opacity 1.35s ease-out,transform 1.35s ease-out!important;
+    filter:drop-shadow(0 0 7px rgba(96,244,154,.34))!important;
+}
+.tiny-mobile #luck-stage .luck-bg-clover .luck-bg-svg {filter:none!important;}
+/* Fade the luck decorations in, without starting full-screen moving glow on the first frame. */
+.tiny-mobile #luck-stage .luck-top-rays {filter:none!important;opacity:0;transition:opacity 1.4s ease!important;}
+.tiny-mobile #luck-stage.active .luck-top-rays {opacity:.47!important;}
+/* Prevent retired stage and entering stage from fighting for expensive layers. */
+.tiny-mobile.tiny-v9-question-crossfade #question-stage .question-space-haze,
+.tiny-mobile.tiny-v9-question-crossfade #question-stage .question-blue-rays {animation-play-state:paused!important;}
+.tiny-mobile #tiny-shop-scene.tiny-shop-opening .dalabs-footer *,
+.tiny-mobile #tiny-shop-scene.tiny-shop-opening .shop-magical-firefly,
+.tiny-mobile #tiny-shop-scene.tiny-shop-opening .shop-magical-petal,
+.tiny-mobile #tiny-shop-scene.tiny-shop-opening .shop-magic-vines * {animation-play-state:paused!important;}
+.tiny-mobile.tiny-v9-reality-enter #tiny-reality-scene .reality-haze,
+.tiny-mobile.tiny-v9-reality-enter #tiny-reality-scene .reality-portal {filter:none!important;}
+.tiny-mobile #question-stage .question-blue-rays {filter:none!important;}
+.tiny-mobile #question-stage .question-space-haze {filter:none!important;}
+/* Defer rendering large footer until user actually scrolls toward it. */
+.tiny-mobile #tiny-shop-scene .dalabs-footer {content-visibility:auto;contain-intrinsic-size:auto 460px;}
+
+/* --- Mobile: tiny-v11-mobile-question-arc-visible --- */
+/* Sửa selector: mắt phải là DIV cuối cùng, KHÔNG phải child cuối vì sau nó còn SVG nụ cười. */
+.tiny-mobile #khung-mat.question-one-eye > .truc-x:last-of-type > svg.mat-cong {
+  display:block !important;
+  visibility:visible !important;
+  width:160px !important;
+  height:70px !important;
+  left:0 !important;
+  top:91px !important;
+  overflow:visible !important;
+  pointer-events:none !important;
+  z-index:20 !important;
+  transform-origin:80px 44px !important;
+  animation:none !important;
+  filter:drop-shadow(0 0 6px rgba(0,255,255,.80)) !important;
+}
+.tiny-mobile #khung-mat.question-one-eye > .truc-x:last-of-type > svg.mat-cong path {
+  opacity:1 !important;
+  fill:none !important;
+  stroke:#9cffff !important;
+  stroke-width:12px !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+}
+@media(max-width:600px){
+  .tiny-mobile #khung-mat.question-one-eye > .truc-x:last-of-type > svg.mat-cong {
+    width:100px !important;
+    height:43.75px !important;
+    top:56.875px !important;
+    transform-origin:50% 50% !important;
+  }
+}
+
