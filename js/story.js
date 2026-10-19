@@ -60,6 +60,7 @@ const text1 = document.getElementById('text-1');
         const MUSIC_HOLD_TIME = 9.7;
         const MUSIC_FADE_START = 8.35;
         const MUSIC_VOLUME = 0.84;
+        const clampVol = (v) => Math.max(0, Math.min(1, Number.isFinite(v) ? v : 0));
         let musicGateClosed = false;
         let musicAllowedPastGate = false;
         let musicFadeTimer = null;
@@ -68,7 +69,7 @@ const text1 = document.getElementById('text-1');
         let lyricActiveIndex = -1;
         let lyricSlotIndex = -1;
         let lyricInterval = null;
-        tinySoundtrack.volume = MUSIC_VOLUME;
+        tinySoundtrack.volume = clampVol(MUSIC_VOLUME);
         tinySoundtrack.muted = false;
         let musicHintTimer = null;
         const musicWaitMessages = ['đợi chút xíu đii', 'đợi chút nữa thui', 'xíu nữa', 'sắp được rùi', '1 chút thuii'];
@@ -102,7 +103,8 @@ const text1 = document.getElementById('text-1');
                 return;
             }
             if (t >= MUSIC_FADE_START) {
-                tinySoundtrack.volume = MUSIC_VOLUME * Math.max(0, (MUSIC_HOLD_TIME - t) / (MUSIC_HOLD_TIME - MUSIC_FADE_START));
+                const ratio = Math.max(0, Math.min(1, (MUSIC_HOLD_TIME - t) / (MUSIC_HOLD_TIME - MUSIC_FADE_START)));
+                tinySoundtrack.volume = clampVol(MUSIC_VOLUME * ratio);
             }
         }
 
@@ -124,9 +126,9 @@ const text1 = document.getElementById('text-1');
             tinySoundtrack.volume = 0;
             const fadeIn = (now) => {
                 if (tinySoundtrack.paused || !musicAllowedPastGate) return;
-                const v = Math.min(1, (now - musicResumeFadeStart) / 850);
-                tinySoundtrack.volume = MUSIC_VOLUME * v;
-                if (v < 1) requestAnimationFrame(fadeIn);
+                const progress = Math.max(0, Math.min(1, (now - musicResumeFadeStart) / 850));
+                tinySoundtrack.volume = clampVol(MUSIC_VOLUME * progress);
+                if (progress < 1) requestAnimationFrame(fadeIn);
             };
             // Đợi âm thanh PHÁT THỰC SỰ rồi mới đếm 850ms tăng âm lượng.
             // Nếu bắt đầu rAF trước play() xong thì có thể bị kẹt tại volume=0.
