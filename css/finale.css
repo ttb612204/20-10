@@ -290,6 +290,10 @@
   display: block;
 }
 
+.thao-photo-card[data-photo-idx="1"] .thao-photo-img {
+  object-position: center top;
+}
+
 .thao-photo-card:hover .thao-photo-img {
   transform: scale(1.06);
 }
@@ -491,6 +495,14 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.thao-heart-item[data-slot="1"] img {
+  object-position: center top;
+}
+
+.thao-heart-item[data-slot="5"] img {
+  object-position: center 35%;
 }
 
 .thao-heart-item:hover {
